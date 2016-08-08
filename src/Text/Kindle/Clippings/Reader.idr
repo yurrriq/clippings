@@ -13,7 +13,7 @@ import public Lightyear
 import public Lightyear.Char
 import public Lightyear.Strings
 
--- FIXME: Hanlde this (better)
+-- FIXME: Handle this (better)
 %access public export
 
 -- -------------------------------------------------------- [ Helper Functions ]
@@ -47,12 +47,6 @@ contentType : Parser String
 contentType = string "- " *> opt (string "Your ")
            *> word
            <* string " on " <|> string " at " <|> pack <$> some space
-
-digitsToInteger : Foldable t => t (Fin 10) -> Integer
-digitsToInteger = foldl (\acc,x => 10 * acc + cast x) 0
-
-digits : Parser Integer
-digits = integer
 
 singletonInterval : Parser Interval
 singletonInterval = Singleton <$> integer
