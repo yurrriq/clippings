@@ -19,7 +19,7 @@ install:
 
 rebuild: clean build
 
-doc:
+doc: build
 	@$(IDRIS) --mkdoc $(PKG).ipkg
 
 doc-clean:
