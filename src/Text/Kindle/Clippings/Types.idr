@@ -29,8 +29,14 @@ record Document where
   ||| The possible missing author of the document.
   author : Maybe Author
 
-data Interval = Singleton Integer
-              | Proper Integer Integer
+||| An interval is either a single integer or a range of integers.
+data Interval : Type where
+    ||| A single place, i.e. `Page' or `Location'.
+    Singleton : Integer -> Interval
+    ||| A range.
+    ||| @ from The start of the range.
+    ||| @ to   The end of the range.
+    Proper    : (from, to : Integer) -> Interval
 
 ||| A page is an interval.
 Page : Type
@@ -40,10 +46,25 @@ Page = Interval
 Location : Type
 Location = Interval
 
-record Position where
-  constructor Pos
-  page     : Maybe Page
-  location : Maybe Location
+||| A position consists of a page, location or both.
+data Position : Type where
+     ||| A page with no location.
+     ||| @ page A page.
+     PP : (page : Page) -> Position
+     ||| A location with no page.
+     ||| @ loc A location.
+     Loc : (loc : Location) -> Position
+     ||| A page and location
+     ||| @ page A page.
+     ||| @ loc  A location.
+     PPLoc : (page : Page) -> (loc : Location) -> Position
+
+mkPosition : (page : Maybe Page) -> (loc : Maybe Location) -> Maybe Position
+mkPosition  Nothing     Nothing   = Nothing
+mkPosition  Nothing    (Just loc) = Just $ Loc loc
+mkPosition (Just page)  Nothing   = Just $ PP page
+mkPosition (Just page) (Just loc) = Just $ PPLoc page loc
+
 
 ||| A date consists of a day, month, date and year.
 record Date where
@@ -52,7 +73,7 @@ record Date where
   ||| A day.
   DDay  : Day
   ||| A month.
-  DMon  : String -- TODO: data Month where ...
+  DMon  : Month
   ||| A date.
   DDate : Integer -- Fin 32
   ||| A year.
@@ -69,6 +90,12 @@ data Content : Type where
    ||| A note.
    ||| @ body The body of a note.
    Note : (body : String) -> Content
+
+mkContent : (type : String) -> Maybe (String -> Content)
+mkContent "Bookmark"  = Just (const Bookmark)
+mkContent "Highlight" = Just Highlight
+mkContent "Note"      = Just Note
+mkContent _           = Nothing
 
 ||| A Kindle clipping consists of a document, position, date and content.
 record Clipping where
