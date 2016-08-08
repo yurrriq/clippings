@@ -19,7 +19,7 @@ import public Lightyear.Strings
 -- -------------------------------------------------------- [ Helper Functions ]
 
 word : Parser String
-word = pack <$> many (satisfy (not . isSpace))
+word = pack <$> manyTill anyChar space
 
 line : Parser String
 line = pack <$> manyTill anyChar endOfLine
