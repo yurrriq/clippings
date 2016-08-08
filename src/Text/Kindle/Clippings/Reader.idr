@@ -93,19 +93,13 @@ content = many endOfLine *> pack <$> manyTill anyToken (some endOfLine *> eor)
 -- ------------------------------------------------------- [ A Clipping Parser ]
 
 clipping : Parser (Maybe Clipping)
-clipping = go
-       <$> document
-       <*> contentType
-       <*> liftA2 Pos (opt page) (opt location)
-       <*> date
-       <*> content
-  where
-    go : Document -> String -> Position -> Date -> String -> Maybe Clipping
-    go d t p dd c = case t of
-      "Bookmark"  => Just . Clip d p dd $ Bookmark
-      "Highlight" => Just . Clip d p dd $ Highlight c
-      "Note"      => Just . Clip d p dd $ Note c
-      _           => Nothing
+clipping = do
+  doc     <- document
+  type    <- contentType
+  pos     <- liftA2 mkPosition (opt page) (opt location)
+  date    <- pure <$> date
+  content <- (<*>) (mkContent type) . pure <$> content
+  pure $ Clip doc <$> pos <*> date <*> content
 
 -- ---------------------------------------------------------------- [ Examples ]
 
