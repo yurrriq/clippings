@@ -1,0 +1,8 @@
+package clippings
+
+opts      = "-p lightyear"
+sourcedir = src
+modules   = Clippings.Types
+          , Clippings.Reader
+
+tests     = Clippings.Reader.testExample

@@ -1,0 +1,5 @@
+Type-Driven Development With Idris (v8) (Edwin Brady)
+- Your Highlight on page 407 | Location 6236-6236 | Added on Wednesday, July 27, 2016 4:19:29 AM
+
+When there are multiple constraints, they must be given in a parenthesised, comma separated list. 
+==========
