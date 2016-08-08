@@ -9,7 +9,8 @@ module Text.Kindle.Clippings.Types
 import        Data.Vect
 import public Data.Date
 
-%access public export
+%access  public export
+%default total
 
 ||| A title is a string.
 Title : Type
