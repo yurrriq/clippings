@@ -23,7 +23,8 @@ doc:
 	@$(IDRIS) --mkdoc $(PKG).ipkg
 
 doc-clean:
-	@rm -rf $(PKG)_doc
+	@rm -rf $(PKG)_doc/*
+	@touch $(PKG)_doc/IdrisDoc
 
 test:
 	@$(IDRIS) --testpkg $(PKG).ipkg

@@ -1,0 +1,4 @@
+[submodule "clippings_doc"]
+	path = clippings_doc
+	url = git@github.com:yurrriq/clippings.git
+	branch = gh-pages

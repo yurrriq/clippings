@@ -17,6 +17,6 @@ cabal.sandbox.config
 *.eventlog
 .stack-work/
 cabal.project.local
-*_doc/
+# *_doc/
 *.ibc
 *~
