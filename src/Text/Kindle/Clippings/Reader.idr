@@ -69,10 +69,11 @@ location = location' *> interval <* some (oneOf " |")
 
 date : Parser Date
 date = do token "Added on"
-          Just day    <- fromString . pack <$> many letter
+          Just day    <- Days.fromString . pack <$> many letter
             | Nothing => fail "Bad day!"
           comma
-          month       <- pack <$> many letter
+          Just month  <- Months.fromString . pack <$> many letter
+            | Nothing => fail "Bad month!"
           space
           -- Just date'  <- (\i => integerToFin i 32) <$> integer
           --   | Nothing => fail "Bad date!"
