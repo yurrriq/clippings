@@ -12,6 +12,8 @@ import public Data.Date
 %access  public export
 %default total
 
+-- ---------------------------------------------------------------- [ Document ]
+
 ||| A title is a string.
 Title : Type
 Title = String
@@ -28,6 +30,8 @@ record Document where
   title  : Title
   ||| The possible missing author of the document.
   author : Maybe Author
+
+-- ---------------------------------------------------------------- [ Interval ]
 
 ||| An interval is either a single integer or a range of integers.
 data Interval : Type where
@@ -46,6 +50,8 @@ Page = Interval
 Location : Type
 Location = Interval
 
+-- ---------------------------------------------------------------- [ Position ]
+
 ||| A position consists of a page, location or both.
 data Position : Type where
      ||| A page with no location.
@@ -59,12 +65,17 @@ data Position : Type where
      ||| @ loc  A location.
      PPLoc : (page : Page) -> (loc : Location) -> Position
 
+||| Given a page, location or both, return a position. If both inputs are
+||| `Nothing`, return `Nothing`.
+||| @ page Maybe a page.
+||| @ loc  Maybe a location.
 mkPosition : (page : Maybe Page) -> (loc : Maybe Location) -> Maybe Position
 mkPosition  Nothing     Nothing   = Nothing
 mkPosition  Nothing    (Just loc) = Just $ Loc loc
 mkPosition (Just page)  Nothing   = Just $ PP page
 mkPosition (Just page) (Just loc) = Just $ PPLoc page loc
 
+-- -------------------------------------------------------------------- [ Date ]
 
 ||| A date consists of a day, month, date and year.
 record Date where
@@ -80,6 +91,8 @@ record Date where
   DYear : Integer
   -- TODO: data Time where ...
 
+-- ----------------------------------------------------------------- [ Content ]
+
 ||| Content is either a bookmark, some highlight text, or a note.
 data Content : Type where
    ||| A bookmark.
@@ -91,11 +104,19 @@ data Content : Type where
    ||| @ body The body of a note.
    Note : (body : String) -> Content
 
+||| If a given string can be parsed as a `Content` data constructor, return just
+||| a function that takes a string and returns the appropriate `Content`. If the
+||| string can't be parsed, return `Nothing`. N.B. The resulting `Bookmark`
+||| function ignores it's input. This makes it easier to use when parsing
+||| clippings.
+||| @ type A string representing a `Content` data constructor.
 mkContent : (type : String) -> Maybe (String -> Content)
 mkContent "Bookmark"  = Just (const Bookmark)
 mkContent "Highlight" = Just Highlight
 mkContent "Note"      = Just Note
 mkContent _           = Nothing
+
+-- ---------------------------------------------------------------- [ Clipping ]
 
 ||| A Kindle clipping consists of a document, position, date and content.
 record Clipping where
