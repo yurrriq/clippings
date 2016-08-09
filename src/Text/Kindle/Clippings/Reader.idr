@@ -19,7 +19,7 @@ import public Lightyear.Strings
 -- -------------------------------------------------------- [ Helper Functions ]
 
 word : Parser String
-word = pack <$> manyTill anyChar space
+word = pack <$> some (satisfy (not . isSpace)) <* spaces
 
 line : Parser String
 line = pack <$> manyTill anyChar endOfLine
@@ -30,7 +30,7 @@ author' = reverse <$> quoted' ')' '('
 
 -- input reversed
 title' : Parser Title
-title' = reverse . unwords <$> manyTill (word <* spaces) eof
+title' = reverse . unwords <$> many word
 
 -- input reversed
 document' : Parser Document
@@ -46,7 +46,7 @@ document = do
 contentType : Parser String
 contentType = string "- " *> opt (string "Your ")
            *> word
-           <* string " on " <|> string " at " <|> pack <$> some space
+           <* token "on" <|> token "at"
 
 singletonInterval : Parser Interval
 singletonInterval = Singleton <$> integer
