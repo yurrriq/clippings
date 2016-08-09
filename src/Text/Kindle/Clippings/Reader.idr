@@ -122,7 +122,7 @@ highlightExample = exampleDocument
            ++ "==========\n\n"
 
 noteExample : String
-noteExample = "﻿Building Web Applications with Erlang (Zachary Kessin)\n"
+noteExample = "Building Web Applications with Erlang (Zachary Kessin)\n"
            ++ "- Your Note on page 22 | Location 308 | "
            ++ "Added on Wednesday, August 13, 2014 12:35:21 AM\n\n\n"
            ++ "This is kind of like built-in mongroup.\n\n"
