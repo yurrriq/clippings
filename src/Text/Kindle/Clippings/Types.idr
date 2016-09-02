@@ -15,8 +15,8 @@ import public Data.Date
 -- ---------------------------------------------------------------- [ Document ]
 
 ||| A title is a string.
-Title : Type
-Title = String
+Title  : Type
+Title  = String
 
 ||| An author is a string.
 Author : Type
@@ -43,8 +43,8 @@ data Interval : Type where
     Proper    : (from, to : Integer) -> Interval
 
 ||| A page is an interval.
-Page : Type
-Page = Interval
+Page     : Type
+Page     = Interval
 
 ||| A location is an interval.
 Location : Type
@@ -56,14 +56,14 @@ Location = Interval
 data Position : Type where
      ||| A page with no location.
      ||| @ page A page.
-     PP : (page : Page) -> Position
+     PP    : (page : Page)     -> Position
      ||| A location with no page.
      ||| @ loc A location.
-     Loc : (loc : Location) -> Position
+     Loc   : (loc  : Location) -> Position
      ||| A page and location
      ||| @ page A page.
      ||| @ loc  A location.
-     PPLoc : (page : Page) -> (loc : Location) -> Position
+     PPLoc : (page : Page)     -> (loc : Location) -> Position
 
 ||| Given a page, location or both, return a position. If both inputs are
 ||| `Nothing`, return `Nothing`.

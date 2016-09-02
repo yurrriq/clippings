@@ -13,7 +13,7 @@ tests     = Text.Kindle.Clippings.Reader.testExampleDocument
 brief     = "Parser for Kindle clippings."
 version   = 0.0.1
 readme    = README.md
-license    = MIT
+license   = MIT
 author    = "Eric Bailey"
 
 homepage   = https://github.com/yurrriq/clippings
