@@ -19,10 +19,10 @@ install:
 
 rebuild: clean build
 
-doc: build
+docs: build
 	@$(IDRIS) --mkdoc $(PKG).ipkg
 
-doc-clean:
+docs-clean:
 	@rm -rf $(PKG)_doc/*
 	@touch $(PKG)_doc/IdrisDoc
 
