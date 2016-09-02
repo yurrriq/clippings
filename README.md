@@ -2,9 +2,13 @@
 Parser for Kindle clippings.
 
 Example:
-```fish
-idris -p lightyear -i src src/Text/Kindle/Clippings.idr
-```
+
+> [idris][] -p [lightyear][] -i [src][] [src/Text/Kindle/Clippings.idr][]
+
+[idris]: https://github.com/idris-lang/Idris-dev
+[lightyear]: https://github.com/ziman/lightyear
+[src]: src
+[src/Text/Kindle/Clippings.idr]: src/Text/Kindle/Clippings.idr
 
 ```idris
 *src/Text/Kindle/Clippings> catMaybes <$> parse (some clipping) examples
