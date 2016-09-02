@@ -33,7 +33,7 @@ author' = reverse <$> quoted' ')' '('
 
 ||| Parse a title, i.e. the rest of a line, in reverse.
 title' : Parser Title
-title' = reverse . pack <$> manyTill anyChar endOfLine
+title' = reverse . unwords <$> many word
 
 ||| Parse a document, i.e. a title, followed by
 ||| a possibly absent parenthesized author, in reverse.
