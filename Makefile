@@ -19,12 +19,13 @@ install:
 
 rebuild: clean build
 
-docs: build
-	@$(IDRIS) --mkdoc $(PKG).ipkg
+docs: build docs-clean
+	@$(IDRIS) --mkdoc $(PKG).ipkg \
+	&& rm -rf docs >/dev/null \
+	&& mv $(PKG)_doc docs
 
 docs-clean:
-	@rm -rf $(PKG)_doc/*
-	@touch $(PKG)_doc/IdrisDoc
+	@rm -rf $(PKG)_doc docs >/dev/null
 
 test:
 	@$(IDRIS) --testpkg $(PKG).ipkg
