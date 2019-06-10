@@ -5,9 +5,25 @@ authors = ["Eric Bailey"]
 description = "Parser for Kindle clippings"
 
 [dependencies]
+"gallais/idris-tparsec" = { git = "https://github.com/gallais/idris-tparsec" }
+"pheymann/specdris" = { git = "https://github.com/pheymann/specdris", branch = "v0.3.1" }
 "ziman/lightyear" = { git = "https://github.com/yurrriq/lightyear" }
 
-[[targets.bin]]
-path = "src"
-name = "clippings"
-main = "Clippings"
+[targets.lib]
+path = "src/"
+mods = [
+    "Text.Kindle.Clippings",
+    "Text.Kindle.Clippings.Types",
+    "Text.Kindle.Clippings.Parser",
+    "Text.Kindle.Clippings.Reader",
+    "Data.Date"
+]
+
+# [[targets.bin]]
+# path = "src"
+# name = "clippings"
+# main = "Clippings"
+
+# [[targets.test]]
+# path = "tests"
+# main = "Main.testExampleTitle"

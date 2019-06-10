@@ -21,4 +21,4 @@ sourceloc  = https://github.com/yurrriq/clippings
 bugtracker = https://github.com/yurrriq/clippings/issues
 
 sourcedir  = src
-pkgs       = lightyear
+pkgs       = lightyear, tparsec

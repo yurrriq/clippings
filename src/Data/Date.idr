@@ -9,6 +9,7 @@ module Data.Date
 
 %access public export
 
+
 -- -------------------------------------------------------------- [ Data Types ]
 
 ||| A day of the week.
@@ -21,6 +22,7 @@ data Day = Monday
          | Sunday
 
 %name Day day, day1, day2
+
 
 ||| A month of the year.
 data Month = January
@@ -38,6 +40,7 @@ data Month = January
 
 %name Month month, month1, month2
 
+
 -- ------------------------------------------------------ [ Eq Implementations ]
 
 Eq Day where
@@ -49,6 +52,7 @@ Eq Day where
   Saturday  == Saturday  = True
   Sunday    == Sunday    = True
   _         == _         = False
+
 
 Eq Month where
   January   == January   = True
@@ -65,7 +69,8 @@ Eq Month where
   December  == December  = True
   _         == _         = False
 
--- ------------------------------------------------------ [ Show Implementations ]
+
+-- ---------------------------------------------------- [ Show Implementations ]
 
 Show Day where
   show Monday    = "Monday"
@@ -75,6 +80,7 @@ Show Day where
   show Friday    = "Friday"
   show Saturday  = "Saturday"
   show Sunday    = "Sunday"
+
 
 Show Month where
   show January   = "January"
@@ -90,6 +96,7 @@ Show Month where
   show November  = "November"
   show December  = "December"
 
+
 -- -------------------------------------------------------- [ Helper Functions ]
 
 namespace Days
@@ -104,6 +111,7 @@ namespace Days
   fromString "Saturday"  = Just Saturday
   fromString "Sunday"    = Just Sunday
   fromString _           = Nothing
+
 
 namespace Months
   ||| Convert a string to a month, if possible, otherwise return `Nothing`.
@@ -122,5 +130,6 @@ namespace Months
   fromString "November"  = Just November
   fromString "December"  = Just December
   fromString _           = Nothing
+
 
 -- --------------------------------------------------------------------- [ EOF ]

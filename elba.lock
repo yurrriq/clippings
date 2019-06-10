@@ -6,7 +6,25 @@ version = '0.1.0'
 id = 'ziman/lightyear@git+https://github.com/yurrriq/lightyear#874edb5dea8f40d273462d979127f29f03cff470'
 version = '0.1.0'
 
+[[packages.dependencies]]
+id = 'pheymann/specdris@git+https://github.com/pheymann/specdris#7d7721cb16f71a389145ce0f41562d889ae648a7'
+version = '0.1.0'
+
+[[packages.dependencies]]
+id = 'gallais/idris-tparsec@git+https://github.com/gallais/idris-tparsec#d5b27118db15047ef949c7cecda5ecbeecaaa775'
+version = '0.1.0'
+
 [[packages]]
 id = 'ziman/lightyear@git+https://github.com/yurrriq/lightyear#874edb5dea8f40d273462d979127f29f03cff470'
+version = '0.1.0'
+dependencies = []
+
+[[packages]]
+id = 'pheymann/specdris@git+https://github.com/pheymann/specdris#7d7721cb16f71a389145ce0f41562d889ae648a7'
+version = '0.1.0'
+dependencies = []
+
+[[packages]]
+id = 'gallais/idris-tparsec@git+https://github.com/gallais/idris-tparsec#d5b27118db15047ef949c7cecda5ecbeecaaa775'
 version = '0.1.0'
 dependencies = []
