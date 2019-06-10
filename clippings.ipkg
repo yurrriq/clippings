@@ -10,8 +10,8 @@ tests      = Text.Kindle.Clippings.Reader.testExampleDocument
            , Text.Kindle.Clippings.Reader.testExampleDate
            , Text.Kindle.Clippings.Reader.testExamples
 
-brief      = "Parser for Kindle clippings."
-version    = 0.0.1
+brief      = "Parser for Kindle clippings"
+version    = 0.1.0
 readme     = README.md
 license    = MIT
 author     = "Eric Bailey"

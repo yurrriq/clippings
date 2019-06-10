@@ -1,0 +1,13 @@
+[package]
+name = "yurrriq/clippings"
+version = "0.1.0"
+authors = ["Eric Bailey"]
+description = "Parser for Kindle clippings"
+
+[dependencies]
+"ziman/lightyear" = { git = "https://github.com/yurrriq/lightyear" }
+
+[[targets.bin]]
+path = "src"
+name = "clippings"
+main = "Clippings"
