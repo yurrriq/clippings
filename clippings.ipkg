@@ -1,24 +1,24 @@
 package clippings
 
-modules   = Text.Kindle.Clippings
-          , Text.Kindle.Clippings.Types
-          , Text.Kindle.Clippings.Reader
-          , Data.Date
+modules    = Text.Kindle.Clippings
+           , Text.Kindle.Clippings.Types
+           , Text.Kindle.Clippings.Reader
+           , Data.Date
 
-tests     = Text.Kindle.Clippings.Reader.testExampleDocument
-          , Text.Kindle.Clippings.Reader.testExampleTitle
-          , Text.Kindle.Clippings.Reader.testExampleDate
-          , Text.Kindle.Clippings.Reader.testExamples
+tests      = Text.Kindle.Clippings.Reader.testExampleDocument
+           , Text.Kindle.Clippings.Reader.testExampleTitle
+           , Text.Kindle.Clippings.Reader.testExampleDate
+           , Text.Kindle.Clippings.Reader.testExamples
 
-brief     = "Parser for Kindle clippings."
-version   = 0.0.1
-readme    = README.md
-license   = MIT
-author    = "Eric Bailey"
+brief      = "Parser for Kindle clippings."
+version    = 0.0.1
+readme     = README.md
+license    = MIT
+author     = "Eric Bailey"
 
 homepage   = https://github.com/yurrriq/clippings
 sourceloc  = https://github.com/yurrriq/clippings
 bugtracker = https://github.com/yurrriq/clippings/issues
 
-sourcedir = src
-opts      = "-p lightyear"
+sourcedir  = src
+pkgs       = lightyear

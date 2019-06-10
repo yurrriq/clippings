@@ -1,7 +1,7 @@
 IDRIS := idris
 PKG   := clippings
 
-.PHONY: build clean clean-all install rebuild doc doc-clean test
+.PHONY: build clean clobber install rebuild test docs docs-clean test
 
 all: build
 
@@ -12,12 +12,15 @@ clean:
 	@$(IDRIS) --clean $(PKG).ipkg
 	@find . -name '*.ibc' -delete
 
-clean-all: clean doc-clean
+clobber: clean docs-clean
 
 install:
 	@$(IDRIS) --install $(PKG).ipkg
 
 rebuild: clean build
+
+test:
+	@$(IDRIS) --testpkg $(PKG).ipkg
 
 docs: build docs-clean
 	@$(IDRIS) --mkdoc $(PKG).ipkg \
@@ -26,6 +29,3 @@ docs: build docs-clean
 
 docs-clean:
 	@rm -rf $(PKG)_doc docs >/dev/null
-
-test:
-	@$(IDRIS) --testpkg $(PKG).ipkg
