@@ -1,5 +1,5 @@
 [[packages]]
-id = 'yurrriq/clippings@dir+/Users/mohacker/src/github.com/yurrriq/clippings'
+id = 'yurrriq/clippings@dir+/home/yurrriq/src/github.com/yurrriq/clippings'
 version = '0.1.0'
 
 [[packages.dependencies]]
@@ -8,10 +8,6 @@ version = '0.1.0'
 
 [[packages.dependencies]]
 id = 'pheymann/specdris@git+https://github.com/pheymann/specdris#7d7721cb16f71a389145ce0f41562d889ae648a7'
-version = '0.1.0'
-
-[[packages.dependencies]]
-id = 'gallais/idris-tparsec@git+https://github.com/gallais/idris-tparsec#d5b27118db15047ef949c7cecda5ecbeecaaa775'
 version = '0.1.0'
 
 [[packages]]
@@ -23,8 +19,14 @@ dependencies = []
 id = 'pheymann/specdris@git+https://github.com/pheymann/specdris#7d7721cb16f71a389145ce0f41562d889ae648a7'
 version = '0.1.0'
 dependencies = []
+[]
 
 [[packages]]
-id = 'gallais/idris-tparsec@git+https://github.com/gallais/idris-tparsec#d5b27118db15047ef949c7cecda5ecbeecaaa775'
+id = 'pheymann/specdris@git+https://github.com/pheymann/specdris#7d7721cb16f71a389145ce0f41562d889ae648a7'
+version = '0.1.0'
+dependencies = []
+
+[[packages]]
+id = 'gallais/idris-tparsec@git+https://github.com/gallais/idris-tparsec#cbaea6ec7e5b62536666329940f3ffb5b8b59036'
 version = '0.1.0'
 dependencies = []

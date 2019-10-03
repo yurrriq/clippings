@@ -1,6 +1,8 @@
-module Main
+module Text.Kindle.ClippingsTest
 
 import Text.Kindle.Clippings
+
+import Specdris.Spec
 
 -- ---------------------------------------------------------------- [ Examples ]
 
@@ -40,30 +42,23 @@ examples : String
 examples = bookmarkExample ++ highlightExample ++ noteExample
 
 
--- ------------------------------------------------------- [ Testing Functions ]
+-- ------------------------------------------------------------------- [ Tests ]
 
-testExampleDocument : IO ()
-testExampleDocument with (parse document exampleDocument)
-  | Right (Doc "Type-Driven Development With Idris (v8)" (Just "Edwin Brady"))
-      = putStrLn "Test Passed"
-  | _ = putStrLn "Test Failed"
-
-
-testExampleTitle : IO ()
-testExampleTitle with (parse document exampleTitle)
-  | Right (Doc "This is the Title and There's No Author" Nothing)
-      = putStrLn "Test Passed"
-  | _ = putStrLn "Test Failed"
-
-
-testExampleDate : IO ()
-testExampleDate with (parse date exampleDate)
-  | Right (MkDate Wednesday July 27 2016)
-      = putStrLn "Test Passed"
-  | _ = putStrLn "Test Failed"
-
-
-testExamples : IO ()
-testExamples with (parse (some clipping) examples)
-  | Right _ = putStrLn "Test Passed"
-  | _       = putStrLn "Test Failed"
+export specSuite : IO ()
+specSuite = spec $ do
+  describe "specdris ftw" $ do
+    it "parses a document with an author" $ do
+      parse document exampleDocument `shouldBe`
+      Right (Doc "Type-Driven Development With Idris (v8)" (Just "Edwin Brady"))
+    it "parses a document without an author" $ do
+      parse document exampleTitle `shouldBe`
+      Right (Doc "This is the Title and There's No Author" Nothing)
+    it "parses a date" $ do
+      parse date exampleDate `shouldBe`
+      Right (MkDate Wednesday July 27 2016)
+    it "parses a bookmark" $ do
+      parse clipping bookmarkExample `shouldSatisfy` isRight
+    it "parses a highlight" $ do
+      parse clipping highlightExample `shouldSatisfy` isRight
+    it "parses a note" $ do
+      parse clipping noteExample `shouldSatisfy` isRight

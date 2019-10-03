@@ -36,8 +36,13 @@ record Document where
 
 
 implementation Show Document where
-    show (Doc title Nothing) = title
+    show (Doc title Nothing)       = title
     show (Doc title (Just author)) = title ++ " (" ++ author ++ ")"
+
+implementation Eq Document where
+    (Doc titleA authorA) == (Doc titleB authorB) =
+        titleA == titleB &&
+        authorA == authorB
 
 
 -- ---------------------------------------------------------------- [ Interval ]
@@ -122,6 +127,13 @@ implementation Show Date where
         concat $ List.intersperse ", " [ show day
                                        , show month ++ " " ++ show date
                                        , show year ]
+
+implementation Eq Date where
+    (MkDate dayA monthA dateA yearA) == (MkDate dayB monthB dateB yearB) =
+        dayA   == dayB   &&
+        monthA == monthB &&
+        dateA  == dateB  &&
+        yearA  == yearB
 
 
 -- ----------------------------------------------------------------- [ Content ]
