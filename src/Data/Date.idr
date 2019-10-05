@@ -132,4 +132,35 @@ namespace Months
   fromString _           = Nothing
 
 
+-- -------------------------------------------------------------------- [ Date ]
+
+||| A date consists of a day, month, date and year.
+record Date where
+    ||| Make a date.
+    constructor MkDate
+    ||| A day.
+    DDay  : Day
+    ||| A month.
+    DMon  : Month
+    ||| A date.
+    DDate : Integer -- Fin 32
+    ||| A year.
+    DYear : Integer
+    -- TODO: data Time where ...
+
+
+implementation Show Date where
+    show (MkDate day month date year) =
+        concat $ List.intersperse ", " [ show day
+                                       , show month ++ " " ++ show date
+                                       , show year ]
+
+implementation Eq Date where
+    (MkDate dayA monthA dateA yearA) == (MkDate dayB monthB dateB yearB) =
+        dayA   == dayB   &&
+        monthA == monthB &&
+        dateA  == dateB  &&
+        yearA  == yearB
+
+
 -- --------------------------------------------------------------------- [ EOF ]

@@ -39,6 +39,7 @@ implementation Show Document where
     show (Doc title Nothing)       = title
     show (Doc title (Just author)) = title ++ " (" ++ author ++ ")"
 
+
 implementation Eq Document where
     (Doc titleA authorA) == (Doc titleB authorB) =
         titleA == titleB &&
@@ -105,37 +106,6 @@ implementation Show Position where
     show (PPLoc page loc) = unwords [ show page, "|", show loc ]
 
 
--- -------------------------------------------------------------------- [ Date ]
-
-||| A date consists of a day, month, date and year.
-record Date where
-    ||| Make a date.
-    constructor MkDate
-    ||| A day.
-    DDay  : Day
-    ||| A month.
-    DMon  : Month
-    ||| A date.
-    DDate : Integer -- Fin 32
-    ||| A year.
-    DYear : Integer
-    -- TODO: data Time where ...
-
-
-implementation Show Date where
-    show (MkDate day month date year) =
-        concat $ List.intersperse ", " [ show day
-                                       , show month ++ " " ++ show date
-                                       , show year ]
-
-implementation Eq Date where
-    (MkDate dayA monthA dateA yearA) == (MkDate dayB monthB dateB yearB) =
-        dayA   == dayB   &&
-        monthA == monthB &&
-        dateA  == dateB  &&
-        yearA  == yearB
-
-
 -- ----------------------------------------------------------------- [ Content ]
 
 ||| Content is either a bookmark, some highlight text, or a note.
@@ -173,7 +143,6 @@ implementation Show Content where
   show Bookmark              = "Bookmark"
   show (Highlight selection) = selection
   show (Note body)           = body
-
 
 
 -- ---------------------------------------------------------------- [ Clipping ]

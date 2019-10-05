@@ -1,6 +1,6 @@
 [package]
 name = "yurrriq/clippings"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Eric Bailey"]
 description = "Parser for Kindle clippings"
 
@@ -19,10 +19,10 @@ mods = [
     "Data.Date"
 ]
 
-# [[targets.bin]]
-# path = "src"
-# name = "clippings"
-# main = "Clippings"
+[[targets.bin]]
+path = "src"
+name = "clippings"
+main = "Clippings"
 
 [[targets.test]]
 path = "test"

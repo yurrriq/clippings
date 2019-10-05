@@ -1,6 +1,6 @@
 [[packages]]
 id = 'yurrriq/clippings@dir+/home/yurrriq/src/github.com/yurrriq/clippings'
-version = '0.1.0'
+version = '0.1.1'
 
 [[packages.dependencies]]
 id = 'ziman/lightyear@git+https://github.com/yurrriq/lightyear#874edb5dea8f40d273462d979127f29f03cff470'

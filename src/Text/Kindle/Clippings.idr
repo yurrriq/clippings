@@ -9,4 +9,5 @@ module Text.Kindle.Clippings
 import public Text.Kindle.Clippings.Types
 import public Text.Kindle.Clippings.Reader
 
+
 -- --------------------------------------------------------------------- [ EOF ]
