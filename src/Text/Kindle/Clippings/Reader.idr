@@ -120,7 +120,7 @@ eor = many endOfLine *> token "=========="
 ||| Parse some content, i.e. empty lines for a `Bookmark`, the `selection` of a
 ||| `Highlight` or the `body` of a `Note`.
 content : Parser String
-content = many endOfLine *> pack <$> manyTill anyToken (some endOfLine *> eor)
+content = many endOfLine *> pack <$> manyTill anyToken (many endOfLine *> eor)
 
 
 -- ------------------------------------------------------- [ A Clipping Parser ]
